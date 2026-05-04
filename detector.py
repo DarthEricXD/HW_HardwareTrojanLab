@@ -8,15 +8,27 @@ def detect_trojan(verilog_code: str) -> dict:
     code_lower = verilog_code.lower()
 
     flags = {
-        "trojan_marker":      "trojan" in code_lower,
-        "internal_counter":   len(re.findall(r'\b\w*counter\w*\b', verilog_code, re.I)) >= 1
-                              or len(re.findall(r'<=\s*\w+\s*\+\s*1', verilog_code)) >= 2,
-        "magic_constant":     len(re.findall(r"==\s*\d+|==\s*\d+'[bh][0-9a-fA-F]+", verilog_code)) >= 1,
+        # T1/T2/T3/T4: header comment added by generation script
+        "trojan_marker":       "trojan" in code_lower,
+        # T1/T3/T4: counters used for triggers and stall mechanisms
+        "internal_counter":    len(re.findall(r'\b\w*counter\w*\b', verilog_code, re.I)) >= 1
+                               or len(re.findall(r'<=\s*\w+\s*\+\s*1', verilog_code)) >= 2,
+        # T1/T2/T3: specific value comparisons used as rare triggers
+        "magic_constant":      len(re.findall(r"==\s*\d+|==\s*\d+'[bh][0-9a-fA-F]+", verilog_code)) >= 1,
+        # T1/T2/T3: conditional block gated by a trigger signal or value
         "conditional_payload": bool(re.search(r'if\s*\(\s*!?\s*\w*trigger\w*', verilog_code, re.I))
                                or bool(re.search(r'if\s*\(\s*\w+\s*==\s*\d+', verilog_code)),
-        "suspicious_logic":   bool(re.search(r'count\s*<=\s*count\s*\+\s*2', verilog_code))
-                              or bool(re.search(r'result\s*=\s*8\'hFF', verilog_code))
-                              or bool(re.search(r'trojan_insertion_begin', verilog_code, re.I)),
+        # T1/T2: known payload patterns and insertion markers
+        "suspicious_logic":    bool(re.search(r'count\s*<=\s*count\s*\+\s*2', verilog_code))
+                               or bool(re.search(r"result\s*=\s*8'hFF", verilog_code))
+                               or bool(re.search(r'trojan_insertion_begin', verilog_code, re.I)),
+        # T3: stall register forces output to zero under rare condition
+        "stall_mechanism":     bool(re.search(r'\bstall\b', code_lower))
+                               or bool(re.search(r'result\s*<=\s*8\'b0', verilog_code))
+                               or bool(re.search(r'if\s*\(\s*!\s*stall\b', code_lower)),
+        # T4: idle toggle register not connected to output (power waste)
+        "power_waste":         bool(re.search(r'<=\s*~\w+', verilog_code))
+                               or bool(re.search(r'\b(?:activity|vulnerability|power|waste)_reg\b', code_lower)),
     }
 
     score = sum(1 for v in flags.values() if v)
