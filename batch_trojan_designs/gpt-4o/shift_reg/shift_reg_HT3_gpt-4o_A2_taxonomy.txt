@@ -1,0 +1,21 @@
+Design: shift_reg.v
+Vulnerability ID: T3
+Model: gpt-4o
+Attempts: 2
+
+Explanation:
+A stall counter is added, which halts the shift operation when a rare condition is met. This occurs when both the input shift_in is high and the MSB of data_out is set, incrementing the counter.
+
+Trigger:
+The trigger condition exploits when `shift_in` is high and `data_out[7]` is set, incrementing a counter until it reaches 15 to induce a stall.
+
+Payload:
+Upon triggering, the payload stalls the data shifting process by skipping normal operations for cycles equal to the counter, temporarily degrading availability.
+
+Taxonomy:
+Insertion phase: Design  
+Abstraction level: Register-transfer level  
+Activation mechanism: Triggered internally  
+Effects: availability-degradation vulnerability  
+Location: Processor  
+Characteristics: Distribution, Functionally rare-condition triggered stall

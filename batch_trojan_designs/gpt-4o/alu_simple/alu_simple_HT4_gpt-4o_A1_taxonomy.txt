@@ -1,0 +1,21 @@
+Design: alu_simple.v
+Vulnerability ID: T4
+Model: gpt-4o
+Attempts: 1
+
+Explanation:
+A register with toggling logic (`vulnerability_reg`) is added, which increases switching activity when a counter reaches a specific value, designed to degrade performance.
+
+Trigger:
+The vulnerability is activated whenever the internal counter `counter` reaches its maximum value, causing frequent toggling of `vulnerability_reg`.
+
+Payload:
+When activated, `vulnerability_reg` toggles continuously, increasing switching activity even if primary outputs remain unaffected.
+
+Taxonomy:
+Insertion phase: Design
+Abstraction level: Register-transfer level
+Activation mechanism: Triggered internally
+Effects: Performance-degradation vulnerability
+Location: Processor
+Characteristics: Continuous toggling, increases switching activity, Parametric type

@@ -1,0 +1,21 @@
+Design: alu_simple.v
+Vulnerability ID: T3
+Model: gpt-4o
+Attempts: 2
+
+Explanation:
+The vulnerability was added by implementing a condition that triggers a stall when specific input values are detected. This causes temporary unavailability of the ALU for normal operations.
+
+Trigger:
+The trigger condition occurs when inputs `a` is `8'b11111111` and `b` is `8'b00000001`. This condition activates the stall mechanism.
+
+Payload:
+When triggered, the payload results in the ALU being non-responsive for up to 256 cycles, before returning to normal operation.
+
+Taxonomy:
+Insertion phase: Design  
+Abstraction level: Register-transfer level  
+Activation mechanism: Triggered internally  
+Effects: availability-degradation vulnerability  
+Location: Processor  
+Characteristics: Distribution: Localized, Size: 1 module, Type: Functional

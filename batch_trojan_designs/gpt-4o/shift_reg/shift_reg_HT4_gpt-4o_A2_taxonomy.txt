@@ -1,0 +1,21 @@
+Design: shift_reg.v
+Vulnerability ID: T4
+Model: gpt-4o
+Attempts: 2
+
+Explanation:
+A counter register is added, which increments every clock cycle to increase switching activity, demonstrating a performance-degradation vulnerability.
+
+Trigger:
+The vulnerability is always active without any specific trigger condition, leading to increased power consumption continuously.
+
+Payload:
+The payload behavior consists of increased switching activity due to the constantly incrementing counter, which affects overall performance.
+
+Taxonomy:
+Insertion phase: Design
+Abstraction level: Register-transfer level
+Activation mechanism: Always-on
+Effects: performance-degradation vulnerability
+Location: Power Supply
+Characteristics: Distribution: Single location, Size: Small, Type: Parametric

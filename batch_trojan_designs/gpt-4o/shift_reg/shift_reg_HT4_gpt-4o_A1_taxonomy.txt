@@ -1,0 +1,21 @@
+Design: shift_reg.v
+Vulnerability ID: T4
+Model: gpt-4o
+Attempts: 1
+
+Explanation:
+A dummy register named `dummy_register` was added that toggles every clock cycle. This register increases internal switching activity, causing additional power consumption without affecting the functionality of the shift register.
+
+Trigger:
+The vulnerability is always active upon reset release because `dummy_register` toggles on every clock cycle regardless of external inputs, causing continuous activity.
+
+Payload:
+This code intentionally increases the switching activity, thus degrading performance by consuming more power due to constant toggling of `dummy_register`.
+
+Taxonomy:
+Insertion phase: Design
+Abstraction level: Register-transfer level
+Activation mechanism: Always-on
+Effects: performance-degradation vulnerability
+Location: Clock Grid
+Characteristics: Distribution: Internal, Size: Small, Type: Parametric

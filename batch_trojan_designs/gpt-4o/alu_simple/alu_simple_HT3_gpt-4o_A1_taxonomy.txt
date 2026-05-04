@@ -1,0 +1,21 @@
+Design: alu_simple.v
+Vulnerability ID: T3
+Model: gpt-4o
+Attempts: 1
+
+Explanation:
+The vulnerability was added by incorporating a stall mechanism triggered by a specific operation code and counter condition, temporarily halting normal operation and degrading availability.
+
+Trigger:
+The stall is activated when the operation code (op) is 3'b111 and the stall counter reaches 4'b1111, a rare condition not typical in intended use.
+
+Payload:
+Upon triggering, the ALU's output is forced to zero, halting the normal operation and causing a denial of service by degrading availability.
+
+Taxonomy:
+Insertion phase: Design  
+Abstraction level: Register-transfer level  
+Activation mechanism: Triggered internally  
+Effects: availability-degradation vulnerability  
+Location: Processor  
+Characteristics: Single-point, Specific event-based, Functional

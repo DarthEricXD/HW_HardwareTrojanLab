@@ -1,0 +1,21 @@
+Design: shift_reg.v
+Vulnerability ID: T4
+Model: gpt-4o
+Attempts: 3
+
+Explanation:
+A vulnerability was added by incorporating an additional register that continuously toggles its bits, increasing the circuit's switching activity and thus its power consumption.
+
+Trigger:
+The vulnerability is always active and does not depend on a specific condition, continually toggling the added register upon every clock edge when not in reset.
+
+Payload:
+The payload increases power consumption by causing continuous switching activity in the inserted register, which does not affect the primary output.
+
+Taxonomy:
+Insertion phase: Design  
+Abstraction level: Register-transfer level  
+Activation mechanism: Always-on  
+Effects: performance-degradation vulnerability  
+Location: Power Supply  
+Characteristics: Localized, Single register, Parametric (power increase)

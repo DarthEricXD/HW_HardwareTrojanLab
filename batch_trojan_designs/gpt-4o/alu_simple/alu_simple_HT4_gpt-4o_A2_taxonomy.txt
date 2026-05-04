@@ -1,0 +1,21 @@
+Design: alu_simple.v
+Vulnerability ID: T4
+Model: gpt-4o
+Attempts: 2
+
+Explanation:
+The vulnerability adds a register (`activity_reg`) driven to continuously toggle, significantly increasing power consumption without affecting the ALU's output.
+
+Trigger:
+The vulnerability is active at all times and toggles `activity_reg` every 16 clock cycles using an internal counter.
+
+Payload:
+The payload acts by increasing power consumption through continuous toggling, causing performance degradation due to excess power usage.
+
+Taxonomy:
+Insertion phase: Design
+Abstraction level: Register-transfer level
+Activation mechanism: Always-on
+Effects: performance-degradation vulnerability
+Location: Power Supply
+Characteristics: Localized, Small, Parametric

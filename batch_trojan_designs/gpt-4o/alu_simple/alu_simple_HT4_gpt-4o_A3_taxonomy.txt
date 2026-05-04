@@ -1,0 +1,21 @@
+Design: alu_simple.v
+Vulnerability ID: T4
+Model: gpt-4o
+Attempts: 3
+
+Explanation:
+A continuously active register is added that increases the switching activity regardless of the ALU operation. This register cycles through all 8-bit values to induce excessive power consumption without affecting the primary outputs.
+
+Trigger:
+The trigger condition for excessive power consumption is implicitly tied to the normal operation of the clock signal, causing continuous increment of the switching register.
+
+Payload:
+The behavior induced by the additional register results in increased power usage during every clock cycle, as it toggles frequently to create unwanted switching activity.
+
+Taxonomy:
+Insertion phase: Design
+Abstraction level: Register-transfer level
+Activation mechanism: Always-on
+Effects: performance-degradation vulnerability
+Location: Power Supply
+Characteristics: Localized, small footprint, Parametric (power-related performance)

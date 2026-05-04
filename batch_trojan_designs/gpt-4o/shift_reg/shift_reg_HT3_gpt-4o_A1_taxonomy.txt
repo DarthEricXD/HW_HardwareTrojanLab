@@ -1,0 +1,21 @@
+Design: shift_reg.v
+Vulnerability ID: T3
+Model: gpt-4o
+Attempts: 1
+
+Explanation:
+A rare-condition stall mechanism is added using a counter and a stall signal, which temporarily halts output updates, demonstrating an availability-degradation vulnerability.
+
+Trigger:
+The counter reaches a rare specific count (12), which triggers the stall condition, temporarily stopping the data shift operation.
+
+Payload:
+When triggered, the `stall` signal prevents the shifting of data for one cycle, momentarily degrading the module's availability by not updating `data_out`.
+
+Taxonomy:
+Insertion phase: Design  
+Abstraction level: Register-transfer level  
+Activation mechanism: Triggered internally  
+Effects: availability-degradation vulnerability  
+Location: Processor  
+Characteristics: Distribution: Rare, Size: Small, Type: Functional

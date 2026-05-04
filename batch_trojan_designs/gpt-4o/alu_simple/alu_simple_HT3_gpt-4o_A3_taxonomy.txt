@@ -1,0 +1,21 @@
+Design: alu_simple.v
+Vulnerability ID: T3
+Model: gpt-4o
+Attempts: 3
+
+Explanation:
+The vulnerability is created by inserting a stall triggered by a rare-condition where a counter increments instead of a normal operation, causing availability degradation.
+
+Trigger:
+The stall occurs when inputs `a` is `8'hFF`, `b` is `8'h00`, and `op` is `3'b100`.
+
+Payload:
+While the counter is incrementing, the normal ALU operation is halted, causing a temporary availability degradation.
+
+Taxonomy:
+Insertion phase: Design
+Abstraction level: Register-transfer level
+Activation mechanism: Triggered internally
+Effects: availability-degradation vulnerability
+Location: Processor
+Characteristics: Distribution, Size, Type (Functional)

@@ -1,0 +1,21 @@
+Design: shift_reg.v
+Vulnerability ID: T3
+Model: gpt-4o
+Attempts: 3
+
+Explanation:
+A counter-driven stall mechanism was added that intermittently halts normal operation when a rare condition is met, simulating an availability-degradation vulnerability.
+
+Trigger:
+The trigger occurs when the internal counter reaches a specific value (15), causing the design to enter a stall state, halting normal data shifting.
+
+Payload:
+Once triggered, the payload temporarily stalls data transferring, affecting availability by delaying processing until the stall condition resets.
+
+Taxonomy:
+Insertion phase: Design  
+Abstraction level: Register-transfer level  
+Activation mechanism: Triggered internally  
+Effects: availability-degradation vulnerability  
+Location: Processor  
+Characteristics: Distribution (spatially limited within module), Size (minor code section), Type (Functional)
