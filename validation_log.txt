@@ -1,0 +1,28 @@
+Validation run — 20 files
+============================================================
+aes_sbox.v: module=PASS  iverilog=SKIP  trojan_markers=NO  lines=15  issues=none
+alu_simple_HT1_gpt-4o_A1.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=48  issues=none
+alu_simple_HT1_gpt-4o_A2.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=45  issues=none
+alu_simple_HT1_gpt-4o_A3.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=44  issues=none
+alu_simple_HT2_gpt-4o_A1.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=50  issues=none
+alu_simple_HT2_gpt-4o_A2.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=47  issues=none
+alu_simple_HT2_gpt-4o_A3.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=50  issues=none
+alu_simple_HT3_gpt-4o_A1.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=51  issues=none
+alu_simple_HT3_gpt-4o_A2.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=49  issues=none
+alu_simple_HT3_gpt-4o_A3.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=42  issues=none
+alu_simple_HT4_gpt-4o_A1.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=47  issues=none
+alu_simple_HT4_gpt-4o_A2.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=48  issues=none
+alu_simple_HT4_gpt-4o_A3.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=40  issues=none
+shift_reg_HT3_gpt-4o_A1.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=44  issues=none
+shift_reg_HT3_gpt-4o_A2.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=31  issues=none
+shift_reg_HT3_gpt-4o_A3.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=39  issues=none
+shift_reg_HT4_gpt-4o_A1.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=35  issues=none
+shift_reg_HT4_gpt-4o_A2.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=28  issues=none
+shift_reg_HT4_gpt-4o_A3.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=34  issues=none
+uart_controller.v: module=PASS  iverilog=SKIP  trojan_markers=YES  lines=31  issues=none
+
+============================================================
+Files validated:        20
+Valid module structure: 20/20
+iverilog syntax pass:   0/0 (skipped 20)
+Trojan markers found:   19/20
