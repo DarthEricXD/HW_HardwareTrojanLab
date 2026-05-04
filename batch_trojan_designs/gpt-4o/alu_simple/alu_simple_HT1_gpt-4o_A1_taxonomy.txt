@@ -1,0 +1,21 @@
+Design: alu_simple.v
+Vulnerability ID: T1
+Model: gpt-4o
+Attempts: 1
+
+Explanation:
+A functional-modification vulnerability was added by incorporating a rare trigger condition based on specific input values that, when sustained over multiple cycles, causes incorrect results.
+
+Trigger:
+The trigger condition is met when the upper 4 bits of a and b are 4'b1010 and 4'b0101, respectively, with this condition sustained for 5 cycles to activate the payload.
+
+Payload:
+When triggered, the payload sets the result to 8'hFF, causing an incorrect output only when the rare condition persists, otherwise normal operation is maintained.
+
+Taxonomy:
+Insertion phase: Design
+Abstraction level: Register-transfer level
+Activation mechanism: Triggered internally
+Effects: functional-modification vulnerability
+Location: Processor
+Characteristics: Targeted, Temporal, Functional

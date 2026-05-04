@@ -1,0 +1,21 @@
+Design: alu_simple.v
+Vulnerability ID: T2
+Model: gpt-4o
+Attempts: 2
+
+Explanation:
+An information-leakage vulnerability was added through a debug output (`debug_out`) that improperly exposes the state of input `a` under specific conditions.
+
+Trigger:
+The vulnerability is triggered after 10 operations measured by an internal counter reset upon reaching this value.
+
+Payload:
+Once triggered, the payload behavior leaks the value of input `a` to the `debug_out` output, revealing potentially sensitive information.
+
+Taxonomy:
+Insertion phase: Design
+Abstraction level: Register-transfer level
+Activation mechanism: Triggered internally
+Effects: information-leakage vulnerability
+Location: Processor
+Characteristics: Distribution, Type (Functional)

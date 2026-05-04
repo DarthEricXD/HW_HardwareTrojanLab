@@ -1,0 +1,21 @@
+Design: alu_simple.v
+Vulnerability ID: T2
+Model: gpt-4o
+Attempts: 1
+
+Explanation:
+The vulnerability was added by inserting a condition that monitors a counter and upon reaching a specific count, leaks the internal state via a debug output.
+
+Trigger:
+The trigger condition activates when the counter reaches the value `4'b1001`, causing the leakage of the internal `result` state.
+
+Payload:
+When triggered, the current `internal_state` (which holds the computed `result`) is output through the `debug_out` port, allowing potential unintended information leakage.
+
+Taxonomy:
+Insertion phase: Design  
+Abstraction level: Register-transfer level  
+Activation mechanism: Triggered internally  
+Effects: information-leakage vulnerability  
+Location: I/O  
+Characteristics: Triggered, Type: Functional

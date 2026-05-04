@@ -1,0 +1,9 @@
+file,path,expected,detected,score,confidence,outcome,flag_trojan_marker,flag_internal_counter,flag_magic_constant,flag_conditional_payload,flag_suspicious_logic
+alu_simple_HT1_gpt-4o_A1.v,./batch_trojan_designs/gpt-4o/alu_simple/alu_simple_HT1_gpt-4o_A1.v,trojaned,trojaned,5,High,TP,True,True,True,True,True
+alu_simple_HT1_gpt-4o_A2.v,./batch_trojan_designs/gpt-4o/alu_simple/alu_simple_HT1_gpt-4o_A2.v,trojaned,trojaned,5,High,TP,True,True,True,True,True
+alu_simple_HT1_gpt-4o_A3.v,./batch_trojan_designs/gpt-4o/alu_simple/alu_simple_HT1_gpt-4o_A3.v,trojaned,trojaned,5,High,TP,True,True,True,True,True
+alu_simple_HT2_gpt-4o_A1.v,./batch_trojan_designs/gpt-4o/alu_simple/alu_simple_HT2_gpt-4o_A1.v,trojaned,trojaned,5,High,TP,True,True,True,True,True
+alu_simple_HT2_gpt-4o_A2.v,./batch_trojan_designs/gpt-4o/alu_simple/alu_simple_HT2_gpt-4o_A2.v,trojaned,trojaned,5,High,TP,True,True,True,True,True
+alu_simple_HT2_gpt-4o_A3.v,./batch_trojan_designs/gpt-4o/alu_simple/alu_simple_HT2_gpt-4o_A3.v,trojaned,trojaned,5,High,TP,True,True,True,True,True
+aes_sbox.v,./batch_trojan_designs/aes_sbox.v,clean,clean,0,Low,TN,False,False,False,False,False
+uart_controller.v,./batch_trojan_designs/uart_controller.v,clean,clean,0,Low,TN,False,False,False,False,False

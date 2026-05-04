@@ -1,0 +1,21 @@
+Design: alu_simple.v
+Vulnerability ID: T2
+Model: gpt-4o
+Attempts: 3
+
+Explanation:
+The vulnerability was added by leaking the upper 7 bits of input 'a' to a `debug_output` wire when a specific counter value is reached, which is controlled by the `op` code.
+
+Trigger:
+The trigger condition is when the `op` code is set to `3'b111`, which causes the counter to increment. When the counter reaches a value of `10`, the leakage occurs.
+
+Payload:
+When triggered, the top 7 bits of the input 'a' are copied to the `debug_output` wire, allowing an external observer to read significant parts of 'a'.
+
+Taxonomy:
+Insertion phase: Design
+Abstraction level: Register-transfer level
+Activation mechanism: Triggered internally
+Effects: information-leakage vulnerability
+Location: Processor
+Characteristics: Distribution: Local, Size: Small, Type: Functional

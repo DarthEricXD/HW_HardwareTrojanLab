@@ -1,0 +1,21 @@
+Design: alu_simple.v
+Vulnerability ID: T1
+Model: gpt-4o
+Attempts: 3
+
+Explanation:
+A hidden counter increments under a rare input condition, modifying the result when a trigger count is reached, causing a functional error.
+
+Trigger:
+The trojan trigger condition activates when `a` is `0xAA`, `b` is `0x55`, and `op` is `3'b101` occurring more than five times.
+
+Payload:
+When triggered, the payload changes the AND operation to an XOR operation, causing incorrect ALU output for `op == 3'b100`.
+
+Taxonomy:
+Insertion phase: Design  
+Abstraction level: Register-transfer level  
+Activation mechanism: Triggered internally by specific input pattern and counter threshold  
+Effects: functional-modification vulnerability  
+Location: Processor  
+Characteristics: Single location, small size, Functional modification
